@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe player</title>
+</head>
+
+<body>
+
+  <div id="iframe-wrapper" style="width:100%;aspect-ratio:16/9;"></div>
+  <script>
+    document.onreadystatechange = () => {
+      if (document.readyState === "complete") {
+        setTimeout(() => {
+          var videoPath = "https://www.videomat.org/ssd-vmt/20230124-mrks-vmt-showreel-3000kbps.mp4";
+          var iframe = document.createElement('iframe');
+          var html = '\
+          <body style="margin:0;padding:0;">\
+            <video width="100%" height="" autoplay="" loop="" muted="" playsinline="">\
+              <source src="' + videoPath + '" type="video/mp4">\
+            </video>\
+            <script>\
+              (function randomCurrentTime() {\
+                var video = document.querySelector("video");\
+                video.onloadedmetadata = function () {\
+                  video.currentTime = Math.random() * video.duration;\
+                }\
+              })();\
+            </scr' + 'ipt>\
+          </body>';
+          iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(html);
+          iframe.setAttribute("style", "width:100%;aspect-ratio:16/9;border:none;");
+          document.getElementById("iframe-wrapper").appendChild(iframe);
+        }, 1);
+      }
+    }
+  </script>
+
+</body>
+
+</html>
+
+<!-- old player
+
+<video width="100%" height="" autoplay="" loop="" muted="" playsinline="" id="20220609-mrks-vmt-showreel-1000kbps">
+  <source src="https://www.videomat.org/ssd-vmt/20230124-mrks-vmt-showreel-3000kbps.mp4" type="video/mp4">
+</video>
+
+<script>
+  function randomCurrentTime(videoId) {
+    var video = document.getElementById(videoId);
+    video.onloadedmetadata = function () {
+        video.currentTime = Math.random() * video.duration;
+    }
+  }
+  randomCurrentTime("20220609-mrks-vmt-showreel-1000kbps");
+</script>
+
+--<
