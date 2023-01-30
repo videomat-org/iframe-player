@@ -1,5 +1,5 @@
 # iframe-player
-random current time autoplay video player in an iframe
+(random start time) autoplay video player in an iframe
 
 ## but why?
 * loading bar bug-fix on iphone ios
