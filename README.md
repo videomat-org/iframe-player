@@ -4,6 +4,7 @@ random current time autoplay video player in an iframe
 ## but why?
 * loading bar bug-fix on iphone ios
 * call autoplay video with javascript immediately after the page is loaded
+* example: https://videomat.org
 
 ## to do
 
